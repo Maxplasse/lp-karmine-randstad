@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Randstad recrute pour Karmine Corp — Adidas Arena</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Randstad palette */
+    --rs-navy: #001b41;
+    --rs-navy-deep: #00132e;
+    --rs-blue: #2075D9;
+    --rs-blue-bright: #2b7fff;
+    --rs-cream: #f5f1e8;
+    --rs-cream-dark: #ebe5d4;
+    --rs-text: #001b41;
+    --rs-text-muted: #6b7280;
+    --rs-border: #d4cdb8;
+    --rs-border-blue: rgba(255,255,255,0.25);
+    --white: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: var(--rs-text);
+    line-height: 1.5;
+    background: var(--white);
+  }
+
+  /* ==== ANNOTATION (mockup-only) ==== */
+  .mockup-banner {
+    background: #ffd83d;
+    color: var(--rs-navy);
+    padding: 8px 24px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.02em;
+  }
+
+  /* ==== TOP STRIP ==== */
+  .topbar {
+    background: var(--white);
+    border-bottom: 1px solid #e5e7eb;
+    padding: 8px 32px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 32px;
+    font-size: 13px;
+  }
+  .topbar a { color: var(--rs-navy); text-decoration: underline; }
+
+  /* ==== MAIN NAV ==== */
+  .nav {
+    background: var(--white);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    color: var(--rs-blue);
+  }
+  .nav-logo svg { height: 28px; width: auto; flex-shrink: 0; }
+  .nav-menu { display: flex; gap: 28px; flex: 1; justify-content: center; }
+  .nav-item {
+    color: var(--rs-navy);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 0;
+  }
+  .nav-item::after {
+    content: '⌄';
+    font-size: 12px;
+    color: var(--rs-text-muted);
+    margin-left: 2px;
+  }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-fav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--rs-navy);
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .nav-fav svg { width: 22px; height: 22px; }
+
+  /* ==== BREADCRUMB ==== */
+  .breadcrumb {
+    padding: 16px 32px;
+    background: var(--white);
+    font-size: 13px;
+    color: var(--rs-text-muted);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .breadcrumb a { color: var(--rs-text-muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--rs-blue); }
+  .breadcrumb span.current { color: var(--rs-navy); }
+
+  /* ==== BUTTONS — STYLE RANDSTAD ==== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: 2px solid;
+    background: transparent;
+    font-family: inherit;
+  }
+  .btn-outline-white { color: var(--white); border-color: var(--white); }
+  .btn-outline-white:hover { background: var(--white); color: var(--rs-navy); }
+  .btn-outline-navy { color: var(--rs-navy); border-color: var(--rs-navy); }
+  .btn-outline-navy:hover { background: var(--rs-navy); color: var(--white); }
+  .btn-solid-blue { background: var(--rs-blue); color: var(--white); border-color: var(--rs-blue); }
+  .btn-solid-blue:hover { background: var(--rs-navy); border-color: var(--rs-navy); }
+
+  /* ==== HERO ==== */
+  .hero {
+    background: var(--rs-blue);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+    overflow: hidden;
+  }
+  .hero-content {
+    padding: 80px 32px 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 720px;
+  }
+  .hero-content h1 {
+    font-size: clamp(40px, 5vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    margin-bottom: 32px;
+    letter-spacing: -0.02em;
+  }
+  .hero-content p { font-size: 17px; line-height: 1.6; margin-bottom: 12px; opacity: 0.95; }
+  .hero-content p strong { font-weight: 700; }
+  .hero-buttons { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
+  .hero-image {
+    background:
+      linear-gradient(135deg, rgba(32,117,217,0.5), rgba(0,27,65,0.3)),
+      url('https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=1400') center/cover;
+    position: relative;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  /* ==== COUNTDOWN STRIP (after hero, navy) ==== */
+  .countdown-strip {
+    background: var(--rs-navy-deep);
+    color: var(--white);
+    padding: 24px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .countdown-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 32px;
+  }
+  .countdown-msg { display: flex; align-items: center; gap: 16px; font-size: 15px; }
+  .pulse {
+    width: 10px;
+    height: 10px;
+    background: #00e5a3;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00e5a3;
+    animation: blink 1.6s infinite;
+    flex-shrink: 0;
+  }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+  .countdown-msg strong { color: #00e5a3; font-weight: 700; }
+  .countdown-blocks { display: flex; gap: 12px; }
+  .cd-block {
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 8px 16px;
+    border-radius: 4px;
+    min-width: 64px;
+  }
+  .cd-num { font-size: 22px; font-weight: 700; line-height: 1; color: var(--white); }
+  .cd-lbl { font-size: 10px; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 4px; }
+
+  /* ==== STATS BAR ==== */
+  .stats {
+    background: var(--white);
+    padding: 56px 32px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--rs-blue);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .stat-num sup { font-size: 24px; }
+  .stat-label {
+    font-size: 14px;
+    color: var(--rs-text-muted);
+    margin-top: 8px;
+    line-height: 1.4;
+  }
+
+  /* ==== INTRO BLUE WALL (cream section) ==== */
+  .section-cream {
+    background: var(--rs-cream);
+    padding: 80px 32px;
+  }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .twocol {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .twocol h2 {
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .twocol p { font-size: 16px; line-height: 1.7; margin-bottom: 16px; }
+
+  .quote-card {
+    background: var(--white);
+    border-left: 4px solid var(--rs-blue);
+    padding: 24px 28px;
+    margin-top: 28px;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  .quote-author {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--rs-text-muted);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ==== ROLES SECTION (white) ==== */
+  .roles {
+    background: var(--white);
+    padding: 80px 32px;
+  }
+  .section-header {
+    margin-bottom: 48px;
+    max-width: 800px;
+  }
+  .section-header h2 {
+    font-size: clamp(32px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .section-header p { font-size: 17px; color: var(--rs-text-muted); }
+
+  .roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .role-card {
+    position: relative;
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--rs-navy);
+    text-decoration: none;
+    display: block;
+    transition: transform 0.25s;
+  }
+  .role-card:hover { transform: translateY(-4px); }
+  .role-card-img {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s;
+  }
+  .role-card:hover .role-card-img { transform: scale(1.04); }
+  .role-card-img-1 { background-image: linear-gradient(180deg, transparent 35%, rgba(0,27,65,0.9)), url('https://images.unsplash.com/photo-1573164574572-cb89e39749b4?auto=format&fit=crop&q=80&w=800'); }
+  .role-card-img-2 { background-image: linear-gradient(180deg, transparent 35%, rgba(0,27,65,0.9)), url('https://images.unsplash.com/photo-1560439514-4e9645039924?auto=format&fit=crop&q=80&w=800'); }
+  .role-card-img-3 { background-image: linear-gradient(180deg, transparent 35%, rgba(0,27,65,0.9)), url('https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800'); }
+
+  .role-card-base {
+    position: absolute;
+    inset: 0;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: var(--white);
+    z-index: 2;
+  }
+  .role-card-title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .role-card-subtitle {
+    font-size: 13px;
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .role-card-arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+  }
+  .role-card:hover .role-card-arrow { transform: translateX(4px); }
+
+  /* ==== PROCESS (cream) ==== */
+  .process {
+    background: var(--rs-cream);
+    padding: 80px 32px;
+    border-top: 1px solid var(--rs-border);
+    border-bottom: 1px solid var(--rs-border);
+  }
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 48px;
+  }
+  .step {
+    background: var(--white);
+    border: 1px solid var(--rs-border);
+    border-right: none;
+    padding: 32px 24px;
+    position: relative;
+  }
+  .step:last-child { border-right: 1px solid var(--rs-border); }
+  .step-num {
+    font-size: 14px;
+    color: var(--rs-blue);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  .step-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  .step-desc {
+    font-size: 14px;
+    color: var(--rs-text-muted);
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+  .step-when {
+    font-size: 12px;
+    color: var(--rs-blue);
+    font-weight: 700;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  /* ==== TESTIMONIALS (white) ==== */
+  .testimonials {
+    background: var(--white);
+    padding: 80px 32px;
+  }
+  .test-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .test-card {
+    background: var(--rs-cream);
+    padding: 32px;
+    border-radius: 8px;
+  }
+  .test-quote {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    font-weight: 500;
+  }
+  .test-quote::before {
+    content: '"';
+    display: block;
+    font-size: 56px;
+    color: var(--rs-blue);
+    line-height: 0.8;
+    margin-bottom: 8px;
+    font-weight: 700;
+  }
+  .test-author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rs-border);
+  }
+  .test-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--rs-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .test-name { font-weight: 700; }
+  .test-role { font-size: 13px; color: var(--rs-text-muted); margin-top: 2px; }
+
+  /* ==== ÉTAPE DÉCISIVE (cream) ==== */
+  .decisive {
+    background: var(--rs-cream);
+    padding: 80px 32px;
+    border-top: 1px solid var(--rs-border);
+  }
+  .decisive-twocol {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .decisive-twocol h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .decisive-twocol p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .decisive-cta { margin-top: 24px; }
+
+  /* ==== FAQ (BLUE) ==== */
+  .faq {
+    background: var(--rs-blue);
+    color: var(--white);
+    padding: 80px 32px;
+  }
+  .faq-twocol {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .faq h2 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+  }
+  .faq-summary {
+    padding: 24px 0;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--white);
+  }
+  .faq-summary::-webkit-details-marker { display: none; }
+  .faq-summary::after {
+    content: '⌄';
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] .faq-summary::after { transform: rotate(180deg); }
+  .faq-content {
+    padding: 0 0 24px;
+    font-size: 15px;
+    line-height: 1.6;
+    opacity: 0.95;
+    max-width: 90%;
+  }
+
+  /* ==== PARTNERSHIP (cream) ==== */
+  .partner {
+    background: var(--rs-cream);
+    padding: 80px 32px;
+    text-align: center;
+  }
+  .partner-inner { max-width: 800px; margin: 0 auto; }
+  .partner h2 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .partner p {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    color: var(--rs-text);
+  }
+  .partner-cta { margin-top: 28px; }
+
+  /* ==== FOOTER ==== */
+  footer {
+    background: var(--rs-navy);
+    color: var(--white);
+    padding: 64px 32px 32px;
+  }
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 48px;
+  }
+  .footer-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--white);
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .footer-col a:hover { color: var(--white); text-decoration: underline; }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.6;
+  }
+
+  /* ==== STICKY MOBILE ==== */
+  .sticky-mobile {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 16px;
+    z-index: 99;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+  }
+  .sticky-mobile a {
+    display: block;
+    text-align: center;
+    background: var(--rs-blue);
+    color: var(--white);
+    padding: 14px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+  /* ==== RESPONSIVE ==== */
+  @media (max-width: 968px) {
+    .nav-menu { display: none; }
+    .topbar { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-image { display: none; }
+    .hero-content { padding: 56px 24px; }
+    .countdown-inner { grid-template-columns: 1fr; gap: 16px; }
+    .twocol, .decisive-twocol, .faq-twocol { grid-template-columns: 1fr; gap: 32px; }
+    .roles-grid, .test-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .step { border-right: 1px solid var(--rs-border); border-bottom: none; }
+    .step:nth-child(1), .step:nth-child(2) { border-bottom: none; }
+    .stats-inner { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+    section, .roles, .testimonials, .partner, .process, .decisive, .faq, .section-cream { padding: 56px 20px; }
+    body { padding-bottom: 80px; }
+    .sticky-mobile { display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="mockup-banner">
+  Maquette · support de discussion · à valider
+</div>
+
+<!-- ==== TOPBAR ==== -->
+<div class="topbar">
+  <a href="#">accessibilité</a>
+  <a href="#">contact</a>
+</div>
+
+<!-- ==== NAV ==== -->
+<nav class="nav">
+  <div class="nav-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 205 30.64" aria-label="Randstad" fill="currentColor">
+      <title>randstad</title>
+      <path d="M15.95,30.32H20.5V18.87a2.26,2.26,0,0,0-.67-1.62l-6.75-6.75a2.25,2.25,0,0,0-1.62-.67H0v4.56H12.53a3.42,3.42,0,0,1,3.42,3.42Z" transform="translate(0 -0.18)"></path>
+      <path d="M27.28,30.32H22.72V18.87a2.26,2.26,0,0,1,.67-1.62l6.75-6.75a2.25,2.25,0,0,1,1.62-.67H43.22v4.56H30.69a3.42,3.42,0,0,0-3.42,3.42Z" transform="translate(0 -0.18)"></path>
+      <path d="M63.8,9.82h3.52V13h.08a6.24,6.24,0,0,1,5.34-3.66,10.69,10.69,0,0,1,2.49.28V13a5.6,5.6,0,0,0-2.09-.36c-3.38,0-5.59,3.22-5.59,8.37v9.33H63.8Z" transform="translate(0 -0.18)"></path>
+      <path d="M179.24,22.35c0,3.09-2,5.44-5.7,5.44-1.72,0-3.81-1.18-3.81-3.36,0-3.65,5.06-4,7.1-4,.8,0,1.6.08,2.41.08Zm-11-7.87a9.52,9.52,0,0,1,5.94-2.13c3.77,0,5.05,1.84,5.05,5.38-1.48-.08-2.53-.08-4-.08-3.89,0-9.52,1.6-9.52,6.75,0,4.5,3.1,6.42,7.51,6.42a7.6,7.6,0,0,0,6.34-3.11h.08v2.61H183V17.79c0-5.6-2.36-8.47-8.21-8.47A13.1,13.1,0,0,0,168,11.24Z" transform="translate(0 -0.18)"></path>
+      <path d="M88,22.35c0,3.09-2,5.44-5.7,5.44-1.73,0-3.81-1.18-3.81-3.36,0-3.65,5.06-4,7.1-4,.8,0,1.6.08,2.41.08ZM77,14.48A9.52,9.52,0,0,1,83,12.35c3.77,0,5.06,1.84,5.06,5.38-1.48-.08-2.53-.08-4-.08-3.89,0-9.52,1.6-9.52,6.75,0,4.5,3.1,6.42,7.51,6.42a7.6,7.6,0,0,0,6.34-3.11h.08v2.61H91.8V17.79c0-5.6-2.36-8.47-8.21-8.47a13.1,13.1,0,0,0-6.74,1.92Z" transform="translate(0 -0.18)"></path>
+      <path d="M94.88,9.82h3.64V13h.08a7.39,7.39,0,0,1,6.73-3.72c5.31,0,7.66,3.28,7.66,8.79V30.32h-3.76V19.69c0-4.79-1-7.13-4.35-7.33-4.31,0-6.24,3.47-6.24,8.48v9.48H94.88Z" transform="translate(0 -0.18)"></path>
+      <path d="M137.55,26.33a10.06,10.06,0,0,0,4.7,1.45c1.72,0,3.85-.73,3.85-2.95,0-3.76-8.87-3.43-8.87-9.21,0-4.27,3.18-6.31,7.23-6.31a15.49,15.49,0,0,1,4.7.81l-.32,3.27a11,11,0,0,0-4-1.05c-1.92,0-3.61.81-3.61,2.51,0,4.2,8.87,3,8.87,9.58,0,4.39-3.5,6.39-7.15,6.39a11.84,11.84,0,0,1-5.62-1.12Z" transform="translate(0 -0.18)"></path>
+      <path d="M164.48,12.85h-5.43V24.11c0,2.38,1.45,3.67,3.17,3.67a4.65,4.65,0,0,0,2.57-.73v3.2a11.94,11.94,0,0,1-3.21.56c-3.89,0-6.29-1.83-6.29-5.94v-12h-4.62v-3h4.62V5.08l3.76-1.2V9.82h5.43Z" transform="translate(0 -0.18)"></path>
+      <path d="M189.56,20c-.08-3.76,1.53-7.64,5.62-7.64s6.06,3.92,6.06,7.76c0,3.43-1.77,7.68-6,7.68C191.17,27.79,189.48,23.22,189.56,20ZM201.4,30.32H205V.18h-3.76V12.6h-.08C200,10.72,198,9.32,194.38,9.32c-5.94,0-8.84,4.85-8.84,10.37s2.61,11.13,8.8,11.13a8.22,8.22,0,0,0,7-3.36h.08Z" transform="translate(0 -0.18)"></path>
+      <path d="M119.57,20c-.08-3.76,1.53-7.64,5.62-7.64s6.06,3.92,6.06,7.76c0,3.43-1.77,7.68-6,7.68C121.17,27.79,119.48,23.22,119.57,20Zm11.84,10.33H135V.18h-3.76V12.6h-.08C130,10.72,128,9.32,124.38,9.32c-5.94,0-8.84,4.85-8.84,10.37s2.61,11.13,8.8,11.13a8.22,8.22,0,0,0,7-3.36h.08Z" transform="translate(0 -0.18)"></path>
+    </svg>
+  </div>
+  <div class="nav-menu"></div>
+  <div class="nav-right">
+    <div class="nav-fav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9-9c-1.5-3.5 0-7 4-7 2 0 4 1.5 5 3 1-1.5 3-3 5-3 4 0 5.5 3.5 4 7-2 4.5-9 9-9 9z"/></svg>
+      0
+    </div>
+  </div>
+</nav>
+
+<!-- ==== BREADCRUMB ==== -->
+<div class="breadcrumb">
+  <a href="#">accueil</a>
+  <span>›</span>
+  <a href="#">trouver un emploi</a>
+  <span>›</span>
+  <span class="current">karmine corp · adidas arena</span>
+</div>
+
+<!-- ==== HERO ==== -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>karmine corp x adidas arena 2026 : intègre le staff officiel.</h1>
+    <p><strong>Randstad, Recruteur Officiel de la Karmine Corp.</strong></p>
+    <p>Cette fois, ne regarde plus le match… vis l'esport de l'intérieur, à l'Adidas Arena.</p>
+    <p>Rejoins-nous pour une mission exceptionnelle <strong>du 24 au 26 juillet 2026</strong>.</p>
+    <div class="hero-buttons">
+      <a href="#postuler" class="btn btn-outline-white">je postule</a>
+      <a href="#roles" class="btn btn-outline-white" style="border-color: rgba(255,255,255,0.5);">voir les rôles</a>
+    </div>
+  </div>
+  <div class="hero-image"></div>
+</section>
+
+<!-- ==== STATS ==== -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">24 000</div>
+      <div class="stat-label">fans attendus sur 3 jours</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">rôles à pourvoir, profils variés</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1 000</div>
+      <div class="stat-label">talents recrutés d'ici mi-mai</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2<sup>e</sup></div>
+      <div class="stat-label">édition après le succès du Spring Roadtrip</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== BLUE WALL (cream) ==== -->
+<section class="section-cream">
+  <div class="section-inner">
+    <div class="twocol">
+      <div>
+        <div style="width:100%; aspect-ratio: 4/5; background: repeating-linear-gradient(135deg, #e8e2d2, #e8e2d2 12px, #ddd6c2 12px, #ddd6c2 24px); border: 1px dashed #b8ad8e; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 14px; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;">
+          placeholder · visuel à fournir
+        </div>
+      </div>
+      <div>
+        <h2>rejoins l'événement au cœur du Blue Wall.</h2>
+        <p>La Karmine Corp, ce n'est pas qu'une équipe esport. C'est une communauté — le Blue Wall — qui a redéfini ce qu'est un événement esport en France.</p>
+        <p>L'<strong>Adidas Arena</strong>, c'est leur prochain palier. <strong>24 000 fans attendus sur 3 jours</strong>. Pour assurer la réussite de ces journées, Randstad recrute l'équipe qui garantira une expérience fluide à des milliers de spectateurs.</p>
+        <p>🔥 <strong>Ton défi ?</strong> Faire de cet événement un succès.</p>
+        <p>🎯 <strong>Ta mission ?</strong> Rejoindre le staff de l'événement et t'immerger dans les coulisses d'une production d'envergure.</p>
+        <div class="quote-card">
+          « C'est pas un job. C'est l'expérience que t'as racontée pendant 6 mois après. »
+          <div class="quote-author">— Sarah, hôtesse d'accueil · Spring Roadtrip Évry, avril 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== ROLES ==== -->
+<section class="roles" id="roles">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>rejoins la Karmine Corp, postule vite !</h2>
+      <p>Clique sur le rôle qui te correspond pour accéder à l'offre.</p>
+    </div>
+
+    <div class="roles-grid">
+
+      <!-- ROLE 1 -->
+      <a href="#" class="role-card">
+        <div class="role-card-img role-card-img-1"></div>
+        <div class="role-card-base">
+          <div class="role-card-title">hôte·sse d'accueil (f/h)</div>
+          <div class="role-card-subtitle">800 places · je postule <span class="role-card-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- ROLE 2 -->
+      <a href="#" class="role-card">
+        <div class="role-card-img role-card-img-2"></div>
+        <div class="role-card-base">
+          <div class="role-card-title">assistant·e production (f/h)</div>
+          <div class="role-card-subtitle">150 places · je postule <span class="role-card-arrow">→</span></div>
+        </div>
+      </a>
+
+      <!-- ROLE 3 -->
+      <a href="#" class="role-card">
+        <div class="role-card-img role-card-img-3"></div>
+        <div class="role-card-base">
+          <div class="role-card-title">chef·fe d'équipe (f/h)</div>
+          <div class="role-card-subtitle">50 places · je postule <span class="role-card-arrow">→</span></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==== PROCESS ==== -->
+<section class="process">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>de la candidature à l'arène, en 4 étapes.</h2>
+      <p>Process clair, délais maîtrisés. Pas de zone de flou.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">tu postules</div>
+        <div class="step-desc">2 minutes. Un formulaire court, pas de lettre de motivation à rallonge.</div>
+        <div class="step-when">avant le 15 mai</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">on te rappelle</div>
+        <div class="step-desc">Un consultant Randstad t'appelle pour valider ton profil et ton rôle.</div>
+        <div class="step-when">sous 7 jours</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">tu es briefé·e</div>
+        <div class="step-desc">Visio collective avec l'équipe Karmine. Tu sais exactement ce qui t'attend.</div>
+        <div class="step-when">mi-juin</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">tu vis l'event</div>
+        <div class="step-desc">3 jours dans les coulisses, dans le Blue Wall, dans l'histoire.</div>
+        <div class="step-when">24-26 juillet</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== TESTIMONIALS ==== -->
+<section class="testimonials">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>ils l'ont fait à Évry. Ils racontent.</h2>
+      <p>Le Spring Roadtrip d'avril a déjà eu lieu. Voici ce qu'en pensent ceux qui y étaient.</p>
+    </div>
+
+    <div class="test-grid">
+      <div class="test-card">
+        <p class="test-quote">Je suis allée au Spring Roadtrip un peu par hasard. Trois mois après, j'ai signé un CDI dans l'événementiel. Cette mission, c'est ce qui a tout déclenché.</p>
+        <div class="test-author">
+          <div class="test-avatar">S</div>
+          <div>
+            <div class="test-name">Sarah, 22 ans</div>
+            <div class="test-role">hôtesse d'accueil · Évry 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">Le truc que personne ne te dit : c'est dur, t'es debout 12h, mais l'ambiance dans les loges quand t'entends le Blue Wall… Y'a aucun stage qui te donne ça.</p>
+        <div class="test-author">
+          <div class="test-avatar">M</div>
+          <div>
+            <div class="test-name">Mehdi, 26 ans</div>
+            <div class="test-role">assistant production · Évry 2026</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card">
+        <p class="test-quote">J'avais déjà bossé sur des concerts. Là, c'est différent — l'esport, c'est une autre énergie, plus jeune, plus intense. Je rempile sans hésiter pour Adidas Arena.</p>
+        <div class="test-author">
+          <div class="test-avatar">L</div>
+          <div>
+            <div class="test-name">Léna, 29 ans</div>
+            <div class="test-role">cheffe d'équipe · Évry 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== ÉTAPE DÉCISIVE ==== -->
+<section class="decisive">
+  <div class="decisive-twocol">
+    <h2>une étape décisive pour ton parcours.</h2>
+    <div>
+      <p>Travailler avec le staff officiel de la Karmine Corp, c'est valider des soft skills, avec l'accompagnement d'un expert des ressources humaines : <strong>Réactivité, sens du service, gestion du stress en environnement clos…</strong> Des compétences clés qui t'aideront à valoriser ton profil.</p>
+      <p>Réussir cette mission, c'est entrer durablement dans notre radar. Nous identifions ton potentiel pour te proposer nos prochaines opportunités en CDI, CDD ou intérim en lien avec tes aspirations professionnelles.</p>
+      <p><strong>Donne une nouvelle dimension à ta passion ! ✨</strong></p>
+      <div class="decisive-cta">
+        <a href="#postuler" class="btn btn-outline-navy">je postule</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==== FAQ ==== -->
+<section class="faq" id="postuler">
+  <div class="faq-twocol">
+    <div>
+      <h2>tu te poses des questions ?<br>on y répond direct, sans détour.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary class="faq-summary">qui peut postuler aux offres randstad pour Karmine Corp à l'Adidas Arena ?</summary>
+        <div class="faq-content">Toute personne majeure, disponible du 24 au 26 juillet 2026, motivée à vivre un événement esport de l'intérieur. Pas besoin d'être fan de Karmine Corp pour postuler — mais ça aide.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">où et quand aura lieu l'événement Karmine Corp à l'Adidas Arena ?</summary>
+        <div class="faq-content">L'événement se tient à l'Adidas Arena, Paris 18e, du 24 au 26 juillet 2026. La mission couvre les 3 jours de compétition, avec un brief obligatoire en visio mi-juin.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">est-ce que je peux postuler si je n'ai jamais travaillé dans l'événementiel ?</summary>
+        <div class="faq-content">Oui, surtout pour le rôle d'hôte·sse d'accueil. Pour les rôles d'assistant·e production et chef·fe d'équipe, une première expérience en événementiel est attendue.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">est-ce une mission ponctuelle ou un CDI ?</summary>
+        <div class="faq-content">C'est une mission ponctuelle (CDD événementiel) sur 3 jours. Mais réussir cette mission, c'est entrer dans le radar de Randstad pour de prochaines opportunités en CDI, CDD ou intérim.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-summary">combien je vais être payé·e ?</summary>
+        <div class="faq-content">Rémunération conforme à la grille événementielle Randstad, avec majorations pour heures de soirée et week-end. Détail communiqué à l'entretien.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ==== PARTNERSHIP ==== -->
+<section class="partner">
+  <div class="partner-inner">
+    <h2>randstad, recruteur officiel de la Karmine Corp.</h2>
+    <p>Partenaire des talents, le Groupe Randstad France intervient à toutes les étapes de la vie professionnelle : recrutement, intégration, management, formation et mobilité.</p>
+    <p>Pour Randstad, accompagner la Karmine Corp est l'occasion de soutenir l'esport français à son plus haut niveau et de faire vivre une expérience hors du commun à ses candidats. Rendez-vous à l'Adidas Arena du 24 au 26 juillet 2026.</p>
+    <div class="partner-cta">
+      <a href="#postuler" class="btn btn-solid-blue">je postule maintenant</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==== FOOTER ==== -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col">
+      <h4>trouver un emploi</h4>
+      <ul>
+        <li><a href="#">toutes nos offres d'emploi</a></li>
+        <li><a href="#">carrières opérationnelles</a></li>
+        <li><a href="#">carrières professionnelles</a></li>
+        <li><a href="#">candidature spontanée</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>être intérimaire</h4>
+      <ul>
+        <li><a href="#">avantages intérimaires</a></li>
+        <li><a href="#">app talent / portail web</a></li>
+        <li><a href="#">faq candidat / intérimaire</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>recruter un talent</h4>
+      <ul>
+        <li><a href="#">toutes nos solutions RH</a></li>
+        <li><a href="#">solutions opérationnelles</a></li>
+        <li><a href="#">solutions professionnelles</a></li>
+        <li><a href="#">contact entreprise</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>nos agences</h4>
+      <ul>
+        <li><a href="#">toutes nos agences</a></li>
+        <li><a href="#">nos agences par ville</a></li>
+        <li><a href="#">nos agences par région</a></li>
+        <li><a href="#">cabinets de recrutement</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Groupe Randstad France est une Société par Actions Simplifiée immatriculée au Registre du Commerce et des Sociétés de Bobigny sous le numéro 702 028 234. Notre siège social est situé au 276 avenue du Président Wilson à Saint Denis (93200). RANDSTAD, PARTNER FOR TALENT sont des marques déposées de © Randstad N.V. 2026.
+  </div>
+</footer>
+
+<!-- ==== STICKY MOBILE ==== -->
+<div class="sticky-mobile">
+  <a href="#postuler">je postule →</a>
+</div>
+
+<script>
+  // Plus de compteur ni de countdown depuis la suppression du bandeau
+</script>
+
+</body>
+</html>
